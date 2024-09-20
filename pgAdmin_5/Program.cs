@@ -63,8 +63,9 @@ public class Program
                             int choiseConnection = Services.Selector(selectConnected);
                             switch (choiseConnection)
                             {
-                                case 0:
-                                    Console.WriteLine("1.Show tables\n2.Add new Table\n3.Update existing table");
+                                case 13:
+                                    //Console.WriteLine("1.Show tables\n2.Add new Table\n3.Update existing table");
+                                    Services.GetTableNames();
                                     break;
                                 case 1:
                                     return;
