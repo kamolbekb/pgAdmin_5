@@ -5,66 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Npgsql;
 
 namespace PGAdminExamEdition;
-public class Services
+public partial class Services
 {
     public static string ConnectionString { get; set; }
-    public static bool CheckConnection()
-    {
-        try
-        {
-            using (var connection = new NpgsqlConnection(ConnectionString))
-            {
-                connection.Open();
-                Console.Clear();
-                Console.WriteLine("Connected successfully!");
-                connection.Close();
-                return true;
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Connection error: {ex.Message}!");
-            return false;
-        }
-    }
-
-    public static void GetTableNames()
-    {
-        try
-        {
-            using (var connection = new NpgsqlConnection(ConnectionString))
-            {
-                connection.Open();
-
-                var schema = connection.GetSchema("Tables");
-
-                if (schema.Rows.Count == 0)
-                {
-                    Console.WriteLine("There are no Tables inside of this DB yet!");
-                    Console.ReadLine();
-                    Console.Clear();
-                }
-                else
-                {
-                    foreach (DataRow row in schema.Rows)
-                    {
-                        Console.Write(row["table_name"]);
-                    }
-                }
-
-                connection.Close();
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error: {ex.Message}");
-        }
-    }
-
-    public static void UpdateTable(string query)
-    {
-    }
-
     public static void GetSchemas()
     {
         try
@@ -116,7 +59,7 @@ public class Services
                     Console.ResetColor();
                 }
             }
-
+    
             ConsoleKeyInfo key = Console.ReadKey(true);
             if (key.Key == ConsoleKey.DownArrow) 
                 indexSelection = (indexSelection + 1) % choise.Count;
