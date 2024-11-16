@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Npgsql;
 namespace PGAdminExamEdition;
 "ConnectionStrings": {
-    "StudentString": "Host=::1;Port=5432;Database=student; User Id= postgres; Password = 2004Kama;"
+    "StudentString": "Host=::1;Port=5432;Database=student; User Id= postgres; Password = ;"
 }
 public class Program
 {
